@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import "../MealInfo/MealInfo.css"
+import "../MealInfo/MealInfo.css";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export default function MealInfo() {
     const { mealid } = useParams(); // Yeh wahi 'id' hai jo MealCard se aa rahi hai
@@ -8,8 +9,7 @@ export default function MealInfo() {
     const navigate = useNavigate();
 
     // Spoonacular API Key yahan rakhein
-    const API_KEY = "badad04f1a6041d79705792207fd7b7c"; 
-
+    
     useEffect(() => {
         const getInfo = async () => {
             try {
