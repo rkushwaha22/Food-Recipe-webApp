@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import MealCard from '../MealCard/MealCard';
 import Loader from '../Loader/Loader';
-import "../MainPage/MainPage.css"
+import "../MainPage/MainPage.css";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export default function MainPage() {
   const [data, setData] = useState(null);
@@ -23,7 +24,6 @@ export default function MainPage() {
 
     try {
       // Spoonacular ka ComplexSearch endpoint sabse best hai
-      const API_KEY = "badad04f1a6041d79705792207fd7b7c";
 
       const response = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=12&apiKey=${API_KEY}`,
