@@ -26,14 +26,18 @@ export default function MainPage() {
       // Spoonacular ka ComplexSearch endpoint sabse best hai
 
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=12&apiKey=${API_KEY}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
-      );
+          `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=12&apiKey=${API_KEY}`
+          );
+
+      // const response = await fetch(
+      //   `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=12&apiKey=${API_KEY}`,
+      //   {
+      //     method: 'GET',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     }
+      //   }
+      // );
 
       const jsonData = await response.json();
 
