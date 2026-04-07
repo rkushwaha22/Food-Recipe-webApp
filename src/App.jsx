@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import MainPage from './Componant/MainPage/MainPage'
+import MainPage from './componant/MainPage/MainPage'
 import { Route, Routes } from 'react-router-dom'
-import MealInfo from './Componant/MealInfo/MealInfo'
+import MealInfo from './componant/MealInfo/MealInfo'
 
 function App() {
   
