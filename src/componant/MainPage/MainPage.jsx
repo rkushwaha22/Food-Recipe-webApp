@@ -7,7 +7,7 @@ export default function MainPage() {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false); // Track if search was ever performed
+  const [hasSearched, setHasSearched] = useState(false);
 
   const HandleInput = (e) => {
     setSearch(e.target.value);
@@ -19,20 +19,21 @@ export default function MainPage() {
       return;
     }
 
-    setLoading(true);
-    setHasSearched(true); 
+    // --- LOADER FIX START ---
+    setLoading(true);      // 1. Loading on karo
+    setData(null);         // 2. Purana data hatao taaki screen khali ho jaye
+    setHasSearched(true);  // 3. Mark karo ki search ho chuki hai
+    // --- LOADER FIX END ---
 
     try {
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
       const jsonData = await response.json();
-
-      // TheMealDB returns null in .meals if nothing is found
       setData(jsonData.meals); 
     } catch (error) {
       console.log("Error fetching data", error);
       alert("Network issue! Please try again.");
     } finally {
-      setLoading(false); 
+      setLoading(false); // 4. Data milne ke baad loading off karo
     }
   }
 
@@ -56,33 +57,35 @@ export default function MainPage() {
       </div>
 
       <div className='content-section'>
+        {/* Priority 1: Agar loading ho rahi hai, toh Loader dikhao */}
         {loading ? (
-          /* Case 1: Fetching Data */
           <div className='loader-container'>
             <Loader />
             <p className='load-para'>Flipping the pans for you...</p>
           </div>
-        ) : !hasSearched ? (
-          /* Case 2: Initial State (No search yet) */
-          <div className='loader-container'>
-            <p className='load-para'>Hungry? Search for a delicious meal!</p>
-          </div>
-        ) : data === null ? (
-          /* Case 3: No Results Found */
-          <div className='loader-container'>
-            <p className='load-para'>No recipes found for "{search}". Try something else!</p>
-          </div>
         ) : (
-          /* Case 4: Results Found */
-          <div className="results-container">
-            <MealCard detail={data} />
-          </div>
+          /* Priority 2: Agar loading nahi hai, toh check karo search hui ya nahi */
+          <>
+            {!hasSearched ? (
+              <div className='loader-container'>
+                <p className='load-para'>Hungry? Search for a delicious meal!</p>
+              </div>
+            ) : (
+              /* Priority 3: Agar search hui hai, toh results check karo */
+              <div className="results-container">
+                {data === null ? (
+                  <p className='load-para'>No recipes found for "{search}". Try something else!</p>
+                ) : (
+                  <MealCard detail={data} />
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
   );
 }
-
 
 
 
