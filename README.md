@@ -1,12 +1,36 @@
-# React + Vite
+# 🥗 Food Recipe WebApp | Culinary Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Explore thousands of recipes from around the world! This app integrates **TheMealDB API** to provide detailed cooking instructions, ingredient lists, and video tutorials.
 
-Currently, two official plugins are available:
+🌐 **Live Demo:** [https://itsfoodrecipe.netlify.app](https://itsfoodrecipe.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features
+- **API Integration:** Real-time data fetching from **TheMealDB** public API.
+- **Search & Filter:** Search recipes by name or filter by categories (e.g., Seafood, Vegan, Dessert).
+- **Detailed View:** Full ingredient lists with measurements and step-by-step instructions.
+- **Video Tutorials:** Direct links to YouTube cooking guides for each recipe.
+- **Responsive Grid:** A beautiful, card-based layout optimized for mobile and desktop.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React.js
+- **Styling:** CSS
+- **API:** [TheMealDB API](https://www.themealdb.com/api.php)
+- **Deployment:** Netlify
+
+---
+
+## ⚙️ How It Works
+1. **Fetching Data:** Uses `Axios` or `Fetch API` to get recipe data from TheMealDB endpoints.
+2. **Dynamic Routing:** Individual recipe pages are generated using **React Router**, passing the unique Meal ID.
+3. **Interactive UI:** Smooth transitions and conditional rendering for loading states and search results.
+
+---
+
+## 🚀 Local Setup
+1. Clone the repo:
+   ```bash
+   git clone [https://github.com/itsrkdev/Food-Recipe-App.git](https://github.com/itsrkdev/Food-Recipe-App.git)
